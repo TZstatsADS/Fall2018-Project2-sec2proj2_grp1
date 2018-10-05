@@ -10,7 +10,12 @@ library(lattice)
 library(scales)
 library(googleway)
 
+
+#this is my own api key 
 register_google(key = 'AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4')
+
+#you have to get your own api key to run the code 
+#this is the link to get the api key https://developers.google.com/maps/documentation/javascript/get-api-key
 
 register_google(key = "AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4", account_type = "premium", day_limit = 100000)
 #functions 
