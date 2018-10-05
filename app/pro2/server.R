@@ -13,14 +13,14 @@ register_google(key = 'AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4')
 register_google(key = "AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4", account_type = "premium", day_limit = 100000)
 #functions 
 
-setwd("C:/Users/jinxi/Documents/semester-2018/applied data science/proj/app")
-bikes <- read.csv('./data/citibikeStations2018.csv')
-hospital <- read.csv('./data/Hospital.csv')
-gardens <- read.csv('./data/Gardens.csv')
+bikes <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/citibikeStations2018.csv')
+hospital <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/Hospital.csv')
+gardens <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/Gardens.csv')
 gardens <- gardens[!(is.na(gardens$Latitude)),]
-libraries <- read.csv('./data/Library.csv')
-wifi <- read.csv('./data/wifi.csv')
-bins <- read.csv('./data/bins.csv')
+libraries <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/Library.csv')
+wifi <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/wifi.csv')
+bins <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/bins.csv')
+
 
 
 #server section 
