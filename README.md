@@ -15,13 +15,11 @@ The **learning goals** for this project is:
 - systems development/design life cycle
 - shiny app/shiny server
 
-*The above general statement about project 2 can be removed once you are finished with your project. It is optional.
-
-## Project Title How does citi bike change your life?
+## How does citi bike change your life?
 Term: Fall 2018
 
-+ Team #
-+ **Projec title**: + Team members
++ Team #1
++ **How does citi bike change your life?** 
 	+ Rui Zhang
 	+ Xin Jin
 	+ Yanzi Shen
