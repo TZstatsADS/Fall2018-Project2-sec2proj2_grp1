@@ -39,7 +39,7 @@ bins <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_g
 #ui section 
 ui <- dashboardPage( skin = 'green', # green lives 
                      #the header section
-                     dashboardHeader(title = "Better Lives! Better World!", titleWidth = 300,
+                     dashboardHeader(title = "Go Bikes! Go Green Future!", titleWidth = 300,
                                      dropdownMenu(
                                        type = 'messages',
                                        messageItem( from ='Action ', message = "Build a green world for future", 
@@ -89,7 +89,8 @@ ui <- dashboardPage( skin = 'green', # green lives
                                  h1('Message for Users', align='center', style = "font-family: 'Lobster', cursive;
                                     font-weight: 500; line-height: 1.1; 
                                     color: #4d3a7d;"), 
-                                 HTML('<p><img src="green.png"/></p>')
+                                 h4("Please write down your message here.XXXXXXXXXXXX"),
+                                  img(src="green.png", height=140, width=400)
                                  
                                  ), 
                          #bike map, creat the bike map for users to find the nearest bike stations
