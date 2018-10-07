@@ -8,6 +8,8 @@ library(ggmap)
 library(lattice)
 library(scales)
 library(googleway)
+library(huxtable)
+
 register_google(key = 'AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4')
 
 register_google(key = "AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4", account_type = "premium", day_limit = 100000)
@@ -181,9 +183,18 @@ server <- function(input, output, session) {
   
   output$showdata <- renderText({
     two_dist <- mapdist(from=input$origin, to=input$destination, mode = 'bicycling')
-    paste0("The distance is: ", round(two_dist$km,3)," kilometers.",
-           "\nThe time is: ", round(two_dist$minutes,3), " minutes", 
-           "\nThe Calories burned is: ", round((two_dist$minutes)*10,3), " calories")
+    two_dist_driving <- mapdist(from=input$origin, to=input$destination, mode = 'driving')
+    paste0("The distance is: ", round(two_dist$km/1.61,3)," miles.",
+           "\n",
+           "\nThe bicycling time is: ", round(two_dist$minutes,3), " minutes", 
+           "\n",
+           "\nThe driving time is:", round(two_dist_driving$minutes,3), " minutes",
+           "\n",
+           "\nThe Calories burned is: ", round((two_dist$minutes)*10,3), " calories, if you go bicycling", 
+           "\n",
+           "\nYou just reduce: ",round(((two_dist$km)/1.61)*440.95,2), " grams of carbon dioxide!!!!", 
+           "\n",
+           "\nThank You for saving the world!")
   })
   
   
