@@ -148,7 +148,7 @@ server <- function(input, output, session) {
   })
   # the text
   output$coords <- renderText({
-    paste0("Longitude=", input$plot_click$x, "\nLatitude=", input$plot_click$y, 
+    paste0("Longitude=", round(input$plot_click$x,6), "\nLatitude=", round(input$plot_click$y,6), 
            "\nThe address is: ", revgeocode(c(input$plot_click$x,input$plot_click$y)))
   })
   
@@ -181,9 +181,9 @@ server <- function(input, output, session) {
   
   output$showdata <- renderText({
     two_dist <- mapdist(from=input$origin, to=input$destination, mode = 'bicycling')
-    paste0("The distance is: ", two_dist$km," kilometers.",
-           "\nThe time is: ", two_dist$minutes, " minutes", 
-           "\nThe Calories burned is: ", (two_dist$minutes)*10, " calories")
+    paste0("The distance is: ", round(two_dist$km,3)," kilometers.",
+           "\nThe time is: ", round(two_dist$minutes,3), " minutes", 
+           "\nThe Calories burned is: ", round((two_dist$minutes)*10,3), " calories")
   })
   
   

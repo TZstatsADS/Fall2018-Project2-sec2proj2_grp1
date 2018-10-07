@@ -88,7 +88,8 @@ ui <- dashboardPage( skin = 'green', # green lives
                          tabItem(tabName = 'message',
                                  h1('Message for Users', align='center', style = "font-family: 'Lobster', cursive;
                                     font-weight: 500; line-height: 1.1; 
-                                    color: #4d3a7d;")
+                                    color: #4d3a7d;"), 
+                                 HTML('<p><img src="green.png"/></p>')
                                  
                                  ), 
                          #bike map, creat the bike map for users to find the nearest bike stations
