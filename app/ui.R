@@ -9,7 +9,8 @@ library(ggmap)
 library(lattice)
 library(scales)
 library(googleway)
-
+library(huxtable)
+source('C:/Users/zhang/OneDrive/Courseworks/GR5243/Fall2018-Project2-sec2_proj2_grp1/lib/register_google.R')
 
 #this is my own api key 
 register_google(key = 'AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4')
@@ -20,13 +21,13 @@ register_google(key = 'AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4')
 register_google(key = "AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4", account_type = "premium", day_limit = 100000)
 #functions 
 
-bikes <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/citibikeStations2018.csv')
-hospital <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/Hospital.csv')
-gardens <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/Gardens.csv')
+bikes <- read.csv('C:/Users/zhang/OneDrive/Courseworks/GR5243/Fall2018-Project2-sec2_proj2_grp1/data/citibikeStations2018.csv')
+hospital <- read.csv('C:/Users/zhang/OneDrive/Courseworks/GR5243/Fall2018-Project2-sec2_proj2_grp1/data/Hospital.csv')
+gardens <- read.csv('C:/Users/zhang/OneDrive/Courseworks/GR5243/Fall2018-Project2-sec2_proj2_grp1/data/Gardens.csv')
 gardens <- gardens[!(is.na(gardens$Latitude)),]
-libraries <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/Library.csv')
-wifi <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/wifi.csv')
-bins <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/bins.csv')
+libraries <- read.csv('C:/Users/zhang/OneDrive/Courseworks/GR5243/Fall2018-Project2-sec2_proj2_grp1/data/Library.csv')
+wifi <- read.csv('C:/Users/zhang/OneDrive/Courseworks/GR5243/Fall2018-Project2-sec2_proj2_grp1/data/wifi.csv')
+bins <- read.csv('C:/Users/zhang/OneDrive/Courseworks/GR5243/Fall2018-Project2-sec2_proj2_grp1/data/bins.csv')
 
 
 
@@ -39,7 +40,7 @@ bins <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_g
 #ui section 
 ui <- dashboardPage( skin = 'green', # green lives 
                      #the header section
-                     dashboardHeader(title = "Go Bikes! Go Green Future!", titleWidth = 300,
+                     dashboardHeader(title = "How Riding Bikes Brings You a Green Life", titleWidth = 400,
                                      dropdownMenu(
                                        type = 'messages',
                                        messageItem( from ='Action ', message = "Build a green world for future", 
