@@ -15,17 +15,16 @@ The **learning goals** for this project is:
 - systems development/design life cycle
 - shiny app/shiny server
 
-## How does citi bike change your life?
+## How Citi Bikes Bring You a Green Life
 Term: Fall 2018
 
 + Team #1
-+ **How does citi bike change your life?** 
++ **How Citi Bikes Bring You a Green Life** 
 	+ Rui Zhang
 	+ Xin Jin
 	+ Yanzi Shen
-	+ Ziliang Xiong 
 
-+ **Project summary**: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
++ **Project summary**: As we all know, the environment is worsening at a fast pace. It’s high time that we should take actions to promote green lifestyle and that’s why we release our web-based R Shiny tools. We use the R shiny interactive maps to guide people to lead a green life. The users can explore the nearby bike stations, gardens, recycling bins and libraries. We can also suggest the optimal route and calculate the calories burned along the way accordingly. Living green is important, and we want to empower you to do your part. Enjoy our tool and learn how to live an environmentally friendly life.  
 
 + **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
