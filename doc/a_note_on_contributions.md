@@ -11,10 +11,9 @@ Below is an example. If no contribution statement is provided, we will insert a 
 ---
 Sample project README statement.
 
-Project xxx
+Project: How Citi Bikes Bring You a Green Life 
+Team members: Xin Jin, Yanzi Shen, Rui Zhang
 
-Team members: Avi Bond, Comma Deed, En Funn, Gem Hon
+Summary: As we all know, the environment is worsening at a fast pace. It’s high time that we should take actions to promote green lifestyle and that’s why we release our web-based R Shiny tools. We use the R shiny interactive maps to guide people to lead a green life. The users can explore the nearby bike stations, gardens, recycling bins and libraries. We can also suggest the optimal route and calculate the calories burned along the way accordingly. Living green is important, and we want to empower you to do your part. Enjoy our tool and learn how to live an environmentally friendly life.
 
-Summary: In this project, we developed a new method and improved the classification accuracy for images of cats and dogs to 99.9%
-
-[Contribution Statement] AB, CD, EF and GH designed the study. AB and CD developed baseline classification model for evaluation. EF and GH explored feature engineering for improving the baseline model. AB, EF and GH discussed and designed the model evaluation protocol. CD carried out the computation for model evaluation. All team members contributed to the GitHub repository and prepared the presentation. All team members approve our work presented in our GitHub repository including this contribution statement.
+[Contribution Statement] Xin Jin researched the legacy codes and add more functionalities to the existing R Shiny product. Rui Zhang searched and organized the datasets and wrote the summary for project. Yanzi Shen prepared the Powerpoint slides for the final presentation.

@@ -1,5 +1,13 @@
+#packages
+packages.used=c("shiny","shinydashboard","leaflet","dplyr","ggmap","lattice","scales","googleway","huxtable")
+packages.needed=setdiff(packages.used, 
+                        intersect(installed.packages()[,1], 
+                                  packages.used))
 
-#packages 
+if(length(packages.needed)>0){
+  install.packages(packages.needed, dependencies = TRUE)
+}
+
 library(shiny)
 library(shinydashboard)
 library(leaflet)
@@ -9,19 +17,21 @@ library(lattice)
 library(scales)
 library(googleway)
 library(huxtable)
+source('../lib/register_google.R')
 
-register_google(key = 'AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4')
 
-register_google(key = "AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4", account_type = "premium", day_limit = 100000)
+register_google(key = 'AIzaSyAMMFd-5P1JoxxN0wn4APqya4L1VSAEBvw')
+
+register_google(key = "AIzaSyAMMFd-5P1JoxxN0wn4APqya4L1VSAEBvw", account_type = "premium", day_limit = 100000)
 #functions 
 
-bikes <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/citibikeStations2018.csv')
-hospital <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/Hospital.csv')
-gardens <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/Gardens.csv')
+bikes <- read.csv('../data/citibikeStations2018.csv')
+hospital <- read.csv('../data/Hospital.csv')
+gardens <- read.csv('../data/Gardens.csv')
 gardens <- gardens[!(is.na(gardens$Latitude)),]
-libraries <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/Library.csv')
-wifi <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/wifi.csv')
-bins <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/bins.csv')
+libraries <- read.csv('../data/Library.csv')
+wifi <- read.csv('../data/wifi.csv')
+bins <- read.csv('../data/bins.csv')
 
 
 
@@ -29,8 +39,8 @@ bins <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_g
 server <- function(input, output, session) {
   #the goggle api key 
   
-  api_key <- "AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4"
-  map_key <- "AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4"
+  api_key <- "AIzaSyAMMFd-5P1JoxxN0wn4APqya4L1VSAEBvw"
+  map_key <- "AIzaSyAMMFd-5P1JoxxN0wn4APqya4L1VSAEBvw"
   
   # the bike map 
   output$bikes <- renderLeaflet({

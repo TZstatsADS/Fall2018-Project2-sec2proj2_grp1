@@ -1,4 +1,3 @@
-#Project 2 
 
 #packages 
 library(shiny)
@@ -9,37 +8,31 @@ library(ggmap)
 library(lattice)
 library(scales)
 library(googleway)
-
+library(huxtable)
+source('../lib/register_google.R')
 
 #this is my own api key 
-register_google(key = 'AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4')
+register_google(key = 'AIzaSyCq8VzY3P1qQvvCA5ERHk-ueMS8Q8LYo8A')
 
 #you have to get your own api key to run the code 
 #this is the link to get the api key https://developers.google.com/maps/documentation/javascript/get-api-key
 
-register_google(key = "AIzaSyAz_yVSZuJDLZE79ouq6HkHQB8Yr3HsqZ4", account_type = "premium", day_limit = 100000)
+register_google(key = "AIzaSyCq8VzY3P1qQvvCA5ERHk-ueMS8Q8LYo8A", account_type = "premium", day_limit = 100000)
 #functions 
 
-bikes <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/citibikeStations2018.csv')
-hospital <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/Hospital.csv')
-gardens <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/Gardens.csv')
+bikes <- read.csv('../data/citibikeStations2018.csv')
+hospital <- read.csv('../data/Hospital.csv')
+gardens <- read.csv('../data/Gardens.csv')
 gardens <- gardens[!(is.na(gardens$Latitude)),]
-libraries <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/Library.csv')
-wifi <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/wifi.csv')
-bins <- read.csv('C:/Users/jinxi/Documents/GitHub/Fall2018-Project2-sec2_proj2_grp1/data/bins.csv')
-
-
-
-
-
-
-
+libraries <- read.csv('../data/Library.csv')
+wifi <- read.csv('../data/wifi.csv')
+bins <- read.csv('../data/bins.csv')
 
 
 #ui section 
 ui <- dashboardPage( skin = 'green', # green lives 
                      #the header section
-                     dashboardHeader(title = "Go Bikes! Go Green Future!", titleWidth = 300,
+                     dashboardHeader(title = "How Citi Bikes Bring You a Green Life", titleWidth = 400,
                                      dropdownMenu(
                                        type = 'messages',
                                        messageItem( from ='Action ', message = "Build a green world for future", 
