@@ -21,11 +21,10 @@ register_google(key = "AIzaSyCq8VzY3P1qQvvCA5ERHk-ueMS8Q8LYo8A", account_type = 
 #functions 
 
 bikes <- read.csv('../data/citibikeStations2018.csv')
-hospital <- read.csv('../data/Hospital.csv')
+
 gardens <- read.csv('../data/Gardens.csv')
 gardens <- gardens[!(is.na(gardens$Latitude)),]
-libraries <- read.csv('../data/Library.csv')
-wifi <- read.csv('../data/wifi.csv')
+
 bins <- read.csv('../data/bins.csv')
 
 
@@ -52,14 +51,10 @@ ui <- dashboardPage( skin = 'green', # green lives
                                   menuSubItem('Find Bikes', tabName = 'bikes', icon = icon('bicycle',lib='font-awesome')),
                                   #the gardens map
                                   menuSubItem('Find Garden', tabName = 'gardens', icon = icon('tree', lib = 'font-awesome')),
-                                  #the hospitals map
-                                  menuSubItem('Find Hospital', tabName = 'hospitals',icon = icon('medkit', lib = 'font-awesome')),
-                                  #the wifi map 
-                                  menuSubItem('Find Wifi', tabName = 'wifi', icon = icon('wifi', lib = 'font-awesome')), 
+                                  
                                   #the recycling bins map 
-                                  menuSubItem('Find Recycling Bins', tabName = 'bins', icon =icon('trash',lib='font-awesome')),
-                                  #the library map 
-                                  menuSubItem('Find Library',tabName = 'libraries', icon = icon('book',lib='font-awesome'))
+                                  menuSubItem('Find Recycling Bins', tabName = 'bins', icon =icon('trash',lib='font-awesome'))
+                                  
                          ), 
                          #third section: calculate the calories 
                          menuItem("Burning Calories", icon = icon('angellist', lib = 'font-awesome'), 
@@ -101,20 +96,7 @@ ui <- dashboardPage( skin = 'green', # green lives
                                     line-height: 1.1;
                                     color: #48ca3b;" ), 
                                  leafletOutput('gardens', width = 1600, height = 800)), 
-                         #hospitals: create the hospitals for user to find the nearest hospitals 
-                         tabItem(tabName ='hospitals', 
-                                 h1('Hospital Map',align='center',style=" font-family: 'Lobster', cursive;
-                                    font-weight: 500;
-                                    line-height: 1.1;
-                                    color: #ea9999;" ),
-                                 leafletOutput('hospitals', width = 1600, height = 800)), 
-                         #wifi map
-                         tabItem(tabName = 'wifi', 
-                                 h1('WIFI Map', align='center',style=" font-family: 'Lobster', cursive;
-                                    font-weight: 500;
-                                    line-height: 1.1;
-                                    color: #ffe599;" ),
-                                 leafletOutput('wifi', width = 1600, height = 800)),
+                        
                          #recycling map 
                          tabItem(tabName = 'bins', 
                                  h1('Recycling Bin Map', align='center',style=" font-family: 'Lobster', cursive;
@@ -122,15 +104,7 @@ ui <- dashboardPage( skin = 'green', # green lives
                                     line-height: 1.1;
                                     color: #38761d;" ),
                                  leafletOutput('bins', width = 1600, height = 800)), 
-                         #libraries map 
-                         tabItem(tabName = 'libraries', 
-                                 h1('Library Map', align='center',style=" font-family: 'Lobster', cursive;
-                                    font-weight: 500;
-                                    line-height: 1.1;
-                                    color: #134f5c;" ),
-                                 leafletOutput('libraries', width = 1600, height = 800)
-                                 ), 
-                         #Calories section
+                    
                          #find the address
                          tabItem(tabName = 'address',
                                  h1('Find the Location',align='center',style=" font-family: 'Lobster', cursive;

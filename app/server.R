@@ -26,11 +26,10 @@ register_google(key = "AIzaSyAMMFd-5P1JoxxN0wn4APqya4L1VSAEBvw", account_type = 
 #functions 
 
 bikes <- read.csv('../data/citibikeStations2018.csv')
-hospital <- read.csv('../data/Hospital.csv')
+
 gardens <- read.csv('../data/Gardens.csv')
 gardens <- gardens[!(is.na(gardens$Latitude)),]
-libraries <- read.csv('../data/Library.csv')
-wifi <- read.csv('../data/wifi.csv')
+
 bins <- read.csv('../data/bins.csv')
 
 
@@ -80,38 +79,7 @@ server <- function(input, output, session) {
   
   
   
-  
-  
-  #the hospitals map 
-  output$hospitals <- renderLeaflet({
-    # the hospital icon
-    hospitalIcon <- icons(
-      iconUrl = "./www/hospital.png",
-      iconWidth = 25, iconHeight = 20,
-      iconAnchorX = 22, iconAnchorY = 94
-      
-    )
-    leaflet(data=hospital)%>% 
-      addTiles()%>% 
-      addMarkers(~Longitude, ~Latitude, popup = ~as.character(Name), icon=hospitalIcon,
-                 label = ~as.character(Name))
-    
-  })
-  #the wifi map 
-  output$wifi <- renderLeaflet({
-    #the wifi icon
-    wifiIcon <- icons(
-      iconUrl = "./www/wifi.png",
-      iconWidth = 25, iconHeight = 20,
-      iconAnchorX = 22, iconAnchorY = 94
-    )
-    #the wifi map 
-    leaflet(data=wifi)%>% 
-      addTiles()%>%
-      addMarkers( ~long, ~lat, popup = ~as.character(Name), icon = wifiIcon,
-                  clusterOptions = markerClusterOptions())
-    
-  })
+
   #the bins map 
   output$bins <- renderLeaflet({
     #the bins icon
@@ -127,30 +95,9 @@ server <- function(input, output, session) {
     
     
   })
+
   
-  
-  
-  #the libraries map 
-  output$libraries <- renderLeaflet({
-    #the library icon
-    libraryIcon <- icons(
-      iconUrl = "./www/library.png",
-      iconWidth = 25, iconHeight = 20,
-      iconAnchorX = 22, iconAnchorY = 94)
-    
-    leaflet(data=libraries)%>% 
-      addTiles()%>% 
-      addMarkers(~long, ~lat, popup = ~as.character(Name), icon=libraryIcon,
-                 clusterOptions = markerClusterOptions() )
-    
-    
-  })
-  
-  
-  
-  
-  
-  
+
   
   # find the lat and long of address 
   output$mapOut <-renderPlot({
