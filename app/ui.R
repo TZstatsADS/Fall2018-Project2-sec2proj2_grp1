@@ -72,7 +72,8 @@ ui <- dashboardPage( skin = 'green', # green lives
                          menuItem("Burning Calories", icon = icon('angellist', lib = 'font-awesome'), 
                                   menuSubItem('Find Address', tabName='address',icon=icon('map-marker',lib='font-awesome')),
                                   menuSubItem("Calories Burned", tabName = 'calories', icon = icon('location-arrow', lib='font-awesome'))
-                         )
+                         ),
+                         menuItem("Contact Us",tabName = 'contact', icon=icon("phone", lib = "font-awesome"))
                          
                        )
                        
@@ -186,6 +187,21 @@ ui <- dashboardPage( skin = 'green', # green lives
                                  )
                                  
                                  
+                                 
+                                 ),
+                         tabItem(tabName = 'contact', 
+                                 h1('Contact Us', align='center',style=" font-family: 'Lobster', cursive;
+                                    font-weight: 500;
+                                    line-height: 1.1;
+                                    color: #00ff00;" ), 
+                                 fluidRow(
+                                   h2("We are Group 1"),
+                                   h4("Xin Jin xj2215@columbia.edu"),
+                                   br(),
+                                   h4('Raymond Zhang rz2394@columbia.edu'), 
+                                   br(), 
+                                   h4("Yanzi Shen ys3088@columbia.edu")
+                                 )
                                  
                                  )
                          )
