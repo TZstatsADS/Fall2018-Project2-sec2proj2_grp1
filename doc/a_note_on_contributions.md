@@ -11,9 +11,8 @@ Below is an example. If no contribution statement is provided, we will insert a 
 ---
 Sample project README statement.
 
-Project xxx
-
-Team members: Avi Bond, Comma Deed, En Funn, Gem Hon
+Project: How Citi Bikes Bring You a Green Life 
+Team members: Xin Jin, Yanzi Shen, Rui Zhang
 
 Summary: In this project, we developed a new method and improved the classification accuracy for images of cats and dogs to 99.9%
 
