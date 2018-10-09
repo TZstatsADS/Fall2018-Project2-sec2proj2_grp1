@@ -32,7 +32,7 @@ bins <- read.csv('../data/bins.csv')
 #ui section 
 ui <- dashboardPage( skin = 'green', # green lives 
                      #the header section
-                     dashboardHeader(title = "How Riding Bikes Brings You a Green Life", titleWidth = 400,
+                     dashboardHeader(title = "How Citi Bikes Brings You a Green Life", titleWidth = 400,
                                      dropdownMenu(
                                        type = 'messages',
                                        messageItem( from ='Action ', message = "Build a green world for future", 
