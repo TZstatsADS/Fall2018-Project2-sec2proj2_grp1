@@ -8,25 +8,18 @@ library(ggmap)
 library(lattice)
 library(scales)
 library(googleway)
-library(huxtable)
+
 library(plotly)
 library(tmap)
 library(tmaptools)
 library(shinyWidgets)
-source('../lib/register_google.R')
-
-#this is my own api key 
-register_google(key = 'AIzaSyCq8VzY3P1qQvvCA5ERHk-ueMS8Q8LYo8A')
-
-#you have to get your own api key to run the code 
-#this is the link to get the api key https://developers.google.com/maps/documentation/javascript/get-api-key
 
 
- 
+
 
 
 #ui section 
-ui <- dashboardPage( skin = 'green', # green lives 
+dashboardPage( skin = 'green', # green lives 
                      #the header section
                      dashboardHeader(title = "How Citi Bikes Bring You a Green Life", titleWidth = 400,
                                      dropdownMenu(
