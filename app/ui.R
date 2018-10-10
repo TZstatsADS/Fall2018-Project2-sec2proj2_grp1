@@ -9,6 +9,7 @@ library(lattice)
 library(scales)
 library(googleway)
 library(huxtable)
+library(plotly)
 source('../lib/register_google.R')
 
 #this is my own api key 
@@ -24,8 +25,10 @@ bikes <- read.csv('../data/citibikeStations2018.csv')
 
 gardens <- read.csv('../data/Gardens.csv')
 gardens <- gardens[!(is.na(gardens$Latitude)),]
-
 bins <- read.csv('../data/bins.csv')
+libraries <- read.csv('../data/Library.csv')
+temp <- read.csv('../data/temp.csv', header = T)
+temp$Date <- as.Date(temp$Date, "%m/%d/%Y")
 
 
 #ui section 
@@ -45,6 +48,9 @@ ui <- dashboardPage( skin = 'green', # green lives
                          #frist part: message for users 
                          menuItem("Message", tabName = 'message', icon = icon("leaf",class=NULL,lib="font-awesome")),
                          
+                         #the chart section; 
+                         menuItem('The Situation',tabName = 'chart', icon = icon('envira', lib='font-awesome')),
+                         
                          #second part: the functions of app
                          menuItem("Green Lives", icon = icon('globe',lib='font-awesome'), 
                                   # the bikes map 
@@ -53,7 +59,10 @@ ui <- dashboardPage( skin = 'green', # green lives
                                   menuSubItem('Find Garden', tabName = 'gardens', icon = icon('tree', lib = 'font-awesome')),
                                   
                                   #the recycling bins map 
-                                  menuSubItem('Find Recycling Bins', tabName = 'bins', icon =icon('trash',lib='font-awesome'))
+                                  menuSubItem('Find Recycling Bins', tabName = 'bins', icon =icon('trash',lib='font-awesome')), 
+                                  menuSubItem('Find Library',tabName = 'libraries', icon = icon('book',lib='font-awesome'))
+                                  
+                                  
                                   
                          ), 
                          #third section: calculate the calories 
@@ -78,10 +87,50 @@ ui <- dashboardPage( skin = 'green', # green lives
                                  h1('Message for Users', align='center', style = "font-family: 'Lobster', cursive;
                                     font-weight: 500; line-height: 1.1; 
                                     color: #4d3a7d;"), 
-                                 h4("Please write down your message here.XXXXXXXXXXXX"),
-                                  img(src="green.png", height=140, width=400)
+                                 h3("     As we all know, the environment is worsening at a fast pace. Greenhouse gases generated 
+                                    by cars give rise to global warming. Glaciers are melting which causes the ocean levels to rise.
+                                    Droughts are plaguing areas that once had plenty of water and crops are yielding less food. 
+                                    Air pollution is making the living conditions on our planet even worse. Various environmental 
+                                    issues pose a huge threat to people's health conditions. It's high time that we should take 
+                                    actions to promote green lifestyles and that's why we release our web-based R Shiny tools."),
+                                 h3("     We use the R shiny interactive maps to guide people to lead a green life efficiently with Citi bike. Our users can utilize 
+                                     our product to explore the nearby bike stations to ride citi bikes. Our interface can also show 
+                                     the gardens near you so that you can breathe fresh air. Nearby recycling bins will also be displayed 
+                                     to encourage people to sort and reduce the waste. What's more, users also have access to the libraries 
+                                     near them so they can read books there. All these things are environmentally friendly."),
+                                 h3("     What's more, we add a fancy functionality 'Burning Calories' to our new product. You will be automatically 
+                                    located after you click the map. The longitude and latitude of your starting point and destination will be shown.
+                                    We will suggest the optimal route and calculate the calories burned along the way accordingly. "),
+                                 h3("     Living green is important, and we want to empower you to do your part.Enjoy our tool and learn how to live an 
+                                    environmentally friendly life. It's more important now than ever to act to solve our environmental problems. 
+                                    Because these changes in our planet are serious, and without action, they're only going to get worse. "),
+                                
+                                  img(src="green.png", height=140, width=400, align='center')
                                  
                                  ), 
+                         #the chart section; 
+                         tabItem(tabName = 'chart', 
+                                 h1('The Situation', align='center', style=" font-family: 'Lobster', cursive;
+                                    font-weight: 500;
+                                    line-height: 1.1;
+                                    color: #ff0000;" ), 
+                                 h3("The Global Changes:"), 
+                                 tabsetPanel(
+                                   tabPanel("The Temperature Changes", plotlyOutput(outputId = 'temp', height = '600px')), 
+                                   tabPanel("The Sea Level Chnages", plotlyOutput(outputId = 'sealevel', height = '600px'))
+                                   
+                                 )
+                                 
+                                 ),
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
+                         
                          #bike map, creat the bike map for users to find the nearest bike stations
                          tabItem(tabName = 'bikes', 
                                  h1('Citi Bike Map',  align='center',style=" font-family: 'Lobster', cursive;
@@ -104,6 +153,14 @@ ui <- dashboardPage( skin = 'green', # green lives
                                     line-height: 1.1;
                                     color: #38761d;" ),
                                  leafletOutput('bins', width = 1600, height = 800)), 
+                         #libraries map 
+                         tabItem(tabName = 'libraries', 
+                                 h1('Library Map', align='center',style=" font-family: 'Lobster', cursive;
+                                    font-weight: 500;
+                                    line-height: 1.1;
+                                    color: #134f5c;" ),
+                                 leafletOutput('libraries', width = 1600, height = 800)
+                         ),
                     
                          #find the address
                          tabItem(tabName = 'address',

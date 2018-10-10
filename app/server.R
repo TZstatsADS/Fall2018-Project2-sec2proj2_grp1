@@ -17,6 +17,7 @@ library(lattice)
 library(scales)
 library(googleway)
 library(huxtable)
+library(plotly)
 source('../lib/register_google.R')
 
 
@@ -29,17 +30,58 @@ bikes <- read.csv('../data/citibikeStations2018.csv')
 
 gardens <- read.csv('../data/Gardens.csv')
 gardens <- gardens[!(is.na(gardens$Latitude)),]
-
 bins <- read.csv('../data/bins.csv')
+libraries <- read.csv('../data/Library.csv')
+temp <- read.csv('../data/temp.csv', header = T)
+temp$Date <- as.Date(temp$Date, "%Y-%m-%d")
 
-
-
+sea <- read.csv('../data/sealevel1.csv', header = T)
+sea$Date <- as.Date(sea$Date, '%Y-%m-%d')
 #server section 
 server <- function(input, output, session) {
   #the goggle api key 
   
   api_key <- "AIzaSyAMMFd-5P1JoxxN0wn4APqya4L1VSAEBvw"
   map_key <- "AIzaSyAMMFd-5P1JoxxN0wn4APqya4L1VSAEBvw"
+  
+  #the chart section 
+  #the temperature chart 
+  output$temp <- renderPlotly({
+   p <- ggplot(temp, aes(x=Date, y=Mean))+
+     geom_line(col='orange')+
+     geom_smooth(method='lm', col='steelblue', linetype=1)+
+     labs(title='Global Temperature Changes', x= 'Year', y='Temperature Difference')
+   p <- ggplotly(p)
+   p
+    
+  })
+  
+  
+  # the sea level chart 
+  
+  output$sealevel <- renderPlotly({
+    p <- ggplot(sea, aes(x=Date, y=change))+
+      geom_line(col='steelblue')+
+      geom_smooth(method='lm', col='red', linetype=1)+
+      labs(title='The Sea level Changes', x= 'Year', y='Sea Level Difference')
+    p <- ggplotly(p)
+    p
+    
+  })
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   # the bike map 
   output$bikes <- renderLeaflet({
@@ -96,6 +138,22 @@ server <- function(input, output, session) {
     
   })
 
+  #the libraries map 
+  output$libraries <- renderLeaflet({
+    #the library icon
+    libraryIcon <- icons(
+      iconUrl = "./www/library.png",
+      iconWidth = 25, iconHeight = 20,
+      iconAnchorX = 22, iconAnchorY = 94)
+    
+    leaflet(data=libraries)%>% 
+      addTiles()%>% 
+      addMarkers(~long, ~lat, popup = ~as.character(Name), icon=libraryIcon,
+                 clusterOptions = markerClusterOptions() )
+    
+    
+  })
+  
   
 
   
