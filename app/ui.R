@@ -10,6 +10,8 @@ library(scales)
 library(googleway)
 library(huxtable)
 library(plotly)
+library(tmap)
+library(tmaptools)
 source('../lib/register_google.R')
 
 #this is my own api key 
@@ -49,7 +51,9 @@ ui <- dashboardPage( skin = 'green', # green lives
                          menuItem("Message", tabName = 'message', icon = icon("leaf",class=NULL,lib="font-awesome")),
                          
                          #the chart section; 
-                         menuItem('The Situation',tabName = 'chart', icon = icon('envira', lib='font-awesome')),
+                         menuItem('The Situation', icon = icon('envira', lib='font-awesome'), 
+                                  menuSubItem("The Diagram",tabName = "chart", icon = icon('signal', lib = 'font-awesome')), 
+                                  menuSubItem("The Region", tabName = 'world')),
                          
                          #second part: the functions of app
                          menuItem("Green Lives", icon = icon('globe',lib='font-awesome'), 
@@ -105,7 +109,7 @@ ui <- dashboardPage( skin = 'green', # green lives
                                     environmentally friendly life. It's more important now than ever to act to solve our environmental problems. 
                                     Because these changes in our planet are serious, and without action, they're only going to get worse. "),
                                 
-                                  img(src="green.png", height=140, width=400, align='center')
+                                  img(src="green.png", height=800, width=800, align='center')
                                  
                                  ), 
                          #the chart section; 
@@ -118,14 +122,37 @@ ui <- dashboardPage( skin = 'green', # green lives
                                  tabsetPanel(
                                    tabPanel("The Temperature Changes", plotlyOutput(outputId = 'temp', height = '600px')), 
                                    tabPanel("The Sea Level Chnages", plotlyOutput(outputId = 'sealevel', height = '600px')), 
-                                   tabPanel("The Trends in Atomspheric Carbon Dioxide", plotlyOutput(outputId = 'co2level', height = '600px')),
-                                   tabPanel("SO2 emission", plotlyOutput(outputId = 'so2', height = '600px'))
+                                   tabPanel("The Trends in Atomspheric Carbon Dioxide", plotlyOutput(outputId = 'co2level', height = '600px'))
+                                   
                                    
                                    
                                  )
                                  
                                  ),
-                         
+                         #the global chart 
+                         tabItem(tabName = 'world', 
+                                 h1(" The World Changes",align='center', style=" font-family: 'Lobster', cursive;
+                                    font-weight: 500;
+                                    line-height: 1.1;
+                                    color: #ff0000;" ), 
+                                 tabsetPanel(
+                                   tabPanel("SO2 emission", plotlyOutput(outputId = 'so2', height = '600px')),
+                                   tabPanel('THe PM2.5', 
+                                            selectInput(inputId='year', label = 'choose the year:',
+                                                        c("1990"=1990,
+                                                          "1995"=1995, 
+                                                          "2000"=2000, 
+                                                          "2005"=2005, 
+                                                          "2010"=2010,
+                                                          "2011"=2011,
+                                                          "2012"=2012,
+                                                          "2013"=2013,
+                                                          "2014"=2014,
+                                                          "2015"=2015)),
+                                            plotOutput(outputId="pm25", height = '600px'))
+                                   
+                                 )
+                                 ),
                          
                          
                          

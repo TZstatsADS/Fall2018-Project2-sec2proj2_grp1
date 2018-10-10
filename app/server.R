@@ -18,9 +18,12 @@ library(scales)
 library(googleway)
 library(huxtable)
 library(plotly)
+library(tmap)
+library(tmaptools)
+data('World')
 source('../lib/register_google.R')
 
-
+getwd()
 register_google(key = 'AIzaSyAMMFd-5P1JoxxN0wn4APqya4L1VSAEBvw')
 
 register_google(key = "AIzaSyAMMFd-5P1JoxxN0wn4APqya4L1VSAEBvw", account_type = "premium", day_limit = 100000)
@@ -39,7 +42,7 @@ sea$Date <- as.Date(sea$Date, '%Y-%m-%d')
 co2 <- read.csv('../data/co2.csv', header = T)
 co2$Date <- as.Date(co2$Date, "%Y-%m-%d")
 so2 <- read.csv('../data/so2.csv', header = T)
-
+pm <- read.csv('../data/pm.csv', header = T)
 
 #server section 
 server <- function(input, output, session) {
@@ -84,10 +87,11 @@ server <- function(input, output, session) {
   })
   
   
-  
+  # the so2 chart
   output$so2 <- renderPlotly({
     p <-  ggplot(so2, aes(x=Year, y=million, fill=Entity))+
-      geom_area()
+      geom_area()+
+      labs(title='The Global SO2 Emission Changes', x="Year",y="Millions Tonnes")
     
     p <- ggplotly(p)
     p
@@ -95,7 +99,15 @@ server <- function(input, output, session) {
   })
   
   
+  # the pm2.5 chart 
+  output$pm25 <- renderPlot({
+    
   
+    World <- append_data(World, pm[pm$Year==input$year,], key.shp='name', key.data='Country', ignore.na=T, ignore.duplicates = T)
+    tm_shape(World)+
+      tm_polygons("pm2.5")
+    
+  })
   
   
   
