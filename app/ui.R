@@ -21,17 +21,8 @@ register_google(key = 'AIzaSyCq8VzY3P1qQvvCA5ERHk-ueMS8Q8LYo8A')
 #you have to get your own api key to run the code 
 #this is the link to get the api key https://developers.google.com/maps/documentation/javascript/get-api-key
 
-register_google(key = "AIzaSyCq8VzY3P1qQvvCA5ERHk-ueMS8Q8LYo8A", account_type = "premium", day_limit = 100000)
-#functions 
 
-bikes <- read.csv('../data/citibikeStations2018.csv')
-
-gardens <- read.csv('../data/Gardens.csv')
-gardens <- gardens[!(is.na(gardens$Latitude)),]
-bins <- read.csv('../data/bins.csv')
-libraries <- read.csv('../data/Library.csv')
-temp <- read.csv('../data/temp.csv', header = T)
-temp$Date <- as.Date(temp$Date, "%m/%d/%Y")
+ 
 
 
 #ui section 

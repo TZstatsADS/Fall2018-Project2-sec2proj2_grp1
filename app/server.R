@@ -1,12 +1,3 @@
-#packages
-packages.used=c("shiny","shinydashboard","leaflet","dplyr","ggmap","lattice","scales","googleway","huxtable")
-packages.needed=setdiff(packages.used, 
-                        intersect(installed.packages()[,1], 
-                                  packages.used))
-
-if(length(packages.needed)>0){
-  install.packages(packages.needed, dependencies = TRUE)
-}
 
 library(shiny)
 library(shinydashboard)
@@ -22,15 +13,12 @@ library(tmap)
 library(tmaptools)
 data('World')
 source('../lib/register_google.R')
-
-getwd()
 register_google(key = 'AIzaSyAMMFd-5P1JoxxN0wn4APqya4L1VSAEBvw')
 
-register_google(key = "AIzaSyAMMFd-5P1JoxxN0wn4APqya4L1VSAEBvw", account_type = "premium", day_limit = 100000)
+
 #functions 
 
 bikes <- read.csv('../data/citibikeStations2018.csv')
-
 gardens <- read.csv('../data/Gardens.csv')
 gardens <- gardens[!(is.na(gardens$Latitude)),]
 bins <- read.csv('../data/bins.csv')
@@ -271,10 +259,6 @@ server <- function(input, output, session) {
   
   
 }
-
-
-
-
 
 
 
