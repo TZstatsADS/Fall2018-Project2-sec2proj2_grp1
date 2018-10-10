@@ -34,9 +34,13 @@ bins <- read.csv('../data/bins.csv')
 libraries <- read.csv('../data/Library.csv')
 temp <- read.csv('../data/temp.csv', header = T)
 temp$Date <- as.Date(temp$Date, "%Y-%m-%d")
-
 sea <- read.csv('../data/sealevel1.csv', header = T)
 sea$Date <- as.Date(sea$Date, '%Y-%m-%d')
+co2 <- read.csv('../data/co2.csv', header = T)
+co2$Date <- as.Date(co2$Date, "%Y-%m-%d")
+
+
+
 #server section 
 server <- function(input, output, session) {
   #the goggle api key 
@@ -69,7 +73,15 @@ server <- function(input, output, session) {
     
   })
   
-  
+  output$co2level <- renderPlotly({
+    p <- ggplot(co2, aes(x=Date, y=Mean))+
+      geom_line(col='steelblue')+
+      geom_smooth(method='lm', col='red', linetype=1)+
+      labs(title='The Sea level Changes', x= 'Year', y='Sea Level Difference')
+    p <- ggplotly(p)
+    p
+    
+  })
   
   
   
