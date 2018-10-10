@@ -63,6 +63,9 @@ server <- function(input, output, session) {
     
   })
   
+  output$temptext <- renderText({
+    "As you can see the chart, the global temperature increases hugely with years, especially recent decades."
+  })
   
   # the sea level chart 
   
@@ -76,14 +79,25 @@ server <- function(input, output, session) {
     
   })
   
+  output$sealeveltext <- renderText({
+    "From this chart, the global sea level is increasing largely since 1900. Also, the shape of line is becoming bigger and bigger. "
+  })
+  
+  
+  
+  #the co2 chart
+  
   output$co2level <- renderPlotly({
     p <- ggplot(co2, aes(x=Date, y=Mean))+
       geom_line(col='steelblue')+
       geom_smooth(method='lm', col='red', linetype=1)+
-      labs(title='The Sea level Changes', x= 'Year', y='Sea Level Difference')
+      labs(title='The Global Carbon Dioxide Changes', x= 'Year', y='CO2 PPM')
     p <- ggplotly(p)
     p
     
+  })
+  output$co2text <- renderText({
+    "From the graph, the CO2 is keeping going up with years, and the situation is also becoming worse and worse!"
   })
   
   
@@ -98,6 +112,12 @@ server <- function(input, output, session) {
     
   })
   
+  output$so2text <- renderText({
+    "From this area chart, during this period of time,Europe, North America and Aisa made the 
+    most contribution to the global SO2 emission, and the Aisa is becoming the biggest part during recent years."
+    
+  })
+  
   
   # the pm2.5 chart 
   output$pm25 <- renderPlot({
@@ -108,7 +128,10 @@ server <- function(input, output, session) {
       tm_polygons("pm2.5")
     
   })
-  
+   output$pmtext <- renderText({
+     "From this global heatmap, the PM2.5 of Aisa and Africa is becoming worse and worse, espcially the middle east, India and China."
+     
+   })
   
   
   

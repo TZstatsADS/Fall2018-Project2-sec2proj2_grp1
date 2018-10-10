@@ -12,6 +12,7 @@ library(huxtable)
 library(plotly)
 library(tmap)
 library(tmaptools)
+library(shinyWidgets)
 source('../lib/register_google.R')
 
 #this is my own api key 
@@ -108,8 +109,8 @@ ui <- dashboardPage( skin = 'green', # green lives
                                  h3("     Living green is important, and we want to empower you to do your part.Enjoy our tool and learn how to live an 
                                     environmentally friendly life. It's more important now than ever to act to solve our environmental problems. 
                                     Because these changes in our planet are serious, and without action, they're only going to get worse. "),
-                                
-                                  img(src="green.png", height=800, width=800, align='center')
+                                 img(src="green.png", height=400, width=800, style="display: block; margin-left: auto; margin-right: auto;")
+                                 
                                  
                                  ), 
                          #the chart section; 
@@ -120,9 +121,12 @@ ui <- dashboardPage( skin = 'green', # green lives
                                     color: #ff0000;" ), 
                                  h3("The Global Changes:"), 
                                  tabsetPanel(
-                                   tabPanel("The Temperature Changes", plotlyOutput(outputId = 'temp', height = '600px')), 
-                                   tabPanel("The Sea Level Chnages", plotlyOutput(outputId = 'sealevel', height = '600px')), 
-                                   tabPanel("The Trends in Atomspheric Carbon Dioxide", plotlyOutput(outputId = 'co2level', height = '600px'))
+                                   tabPanel("The Temperature Changes", plotlyOutput(outputId = 'temp', height = '600px'), 
+                                            textOutput("temptext")), 
+                                   tabPanel("The Sea Level Chnanges", plotlyOutput(outputId = 'sealevel', height = '600px'),
+                                            textOutput('sealeveltext')), 
+                                   tabPanel("The Trends in Atomspheric Carbon Dioxide", plotlyOutput(outputId = 'co2level', height = '600px'),
+                                            textOutput('co2text'))
                                    
                                    
                                    
@@ -136,7 +140,8 @@ ui <- dashboardPage( skin = 'green', # green lives
                                     line-height: 1.1;
                                     color: #ff0000;" ), 
                                  tabsetPanel(
-                                   tabPanel("SO2 emission", plotlyOutput(outputId = 'so2', height = '600px')),
+                                   tabPanel("SO2 emission", plotlyOutput(outputId = 'so2', height = '600px'), 
+                                            textOutput('so2text')),
                                    tabPanel('THe PM2.5', 
                                             selectInput(inputId='year', label = 'choose the year:',
                                                         c("1990"=1990,
@@ -149,7 +154,8 @@ ui <- dashboardPage( skin = 'green', # green lives
                                                           "2013"=2013,
                                                           "2014"=2014,
                                                           "2015"=2015)),
-                                            plotOutput(outputId="pm25", height = '600px'))
+                                            plotOutput(outputId="pm25", height = '600px'), 
+                                            textOutput('pmtext'))
                                    
                                  )
                                  ),
