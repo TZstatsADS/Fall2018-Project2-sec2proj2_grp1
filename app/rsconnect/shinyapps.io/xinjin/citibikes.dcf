@@ -5,8 +5,8 @@ account: xinjin
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 505520
-bundleId: 1635341
+bundleId: 1635374
 url: https://xinjin.shinyapps.io/citibikes/
-when: 1539201650.58976
+when: 1539202401.10226
 asMultiple: FALSE
 asStatic: FALSE

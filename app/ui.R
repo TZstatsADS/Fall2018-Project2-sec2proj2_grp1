@@ -224,7 +224,7 @@ dashboardPage( skin = 'green', # green lives
                                    ),
                                    
                                    box(title='The Best Bicycling Route',status = 'success',solidHeader = T,
-                                       google_mapOutput('myMap', width = 500, height = 600) 
+                                       google_mapOutput('myMap', width =700, height = 600) 
                                        
                                    )
                                    
