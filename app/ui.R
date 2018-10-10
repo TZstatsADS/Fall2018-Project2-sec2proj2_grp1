@@ -118,7 +118,9 @@ ui <- dashboardPage( skin = 'green', # green lives
                                  tabsetPanel(
                                    tabPanel("The Temperature Changes", plotlyOutput(outputId = 'temp', height = '600px')), 
                                    tabPanel("The Sea Level Chnages", plotlyOutput(outputId = 'sealevel', height = '600px')), 
-                                   tabPanel("The Trends in Atomspheric Carbon Dioxide", plotlyOutput(outputId = 'co2level', height = '600px'))
+                                   tabPanel("The Trends in Atomspheric Carbon Dioxide", plotlyOutput(outputId = 'co2level', height = '600px')),
+                                   tabPanel("SO2 emission", plotlyOutput(outputId = 'so2', height = '600px'))
+                                   
                                    
                                  )
                                  

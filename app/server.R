@@ -38,7 +38,7 @@ sea <- read.csv('../data/sealevel1.csv', header = T)
 sea$Date <- as.Date(sea$Date, '%Y-%m-%d')
 co2 <- read.csv('../data/co2.csv', header = T)
 co2$Date <- as.Date(co2$Date, "%Y-%m-%d")
-
+so2 <- read.csv('../data/so2.csv', header = T)
 
 
 #server section 
@@ -85,6 +85,14 @@ server <- function(input, output, session) {
   
   
   
+  output$so2 <- renderPlotly({
+    p <-  ggplot(so2, aes(x=Year, y=million, fill=Entity))+
+      geom_area()
+    
+    p <- ggplotly(p)
+    p
+    
+  })
   
   
   
@@ -228,3 +236,11 @@ server <- function(input, output, session) {
   
   
 }
+
+
+
+
+
+
+
+
