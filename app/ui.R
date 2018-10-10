@@ -126,7 +126,7 @@ dashboardPage( skin = 'green', # green lives
                                  tabsetPanel(
                                    tabPanel("SO2 emission", plotlyOutput(outputId = 'so2', height = '600px'), 
                                             textOutput('so2text')),
-                                   tabPanel('THe PM2.5', 
+                                   tabPanel('The PM2.5', 
                                             selectInput(inputId='year', label = 'choose the year:',
                                                         c("1990"=1990,
                                                           "1995"=1995, 
@@ -189,7 +189,7 @@ dashboardPage( skin = 'green', # green lives
                                     line-height: 1.1;
                                     color: #00ff00;" ),
                                  fluidRow(
-                                   box(title = "Attention", status = "warning", solidHeader = T, height = 10,width = 3,
+                                   box(title = "Attention", status = "warning", solidHeader = T, height = 5,width = 5,
                                        h3('click on this map, you will find the longitude and latitude of your starting point and your destination,',align='center'),
                                        h3(' then you paste and copy the address of starting point and destination in the "Calories Burned" section.', align='center'), 
                                        
@@ -198,7 +198,7 @@ dashboardPage( skin = 'green', # green lives
                                    ), 
                                    box(title = 'Please Click on Map', status = 'success',solidHeader = T,
                                        plotOutput(outputId = 'mapOut',
-                                                  width = 1000, height=700, 
+                                                  width = 600, height=600, 
                                                   click = "plot_click")
                                    )
                                  )
@@ -224,7 +224,7 @@ dashboardPage( skin = 'green', # green lives
                                    ),
                                    
                                    box(title='The Best Bicycling Route',status = 'success',solidHeader = T,
-                                       google_mapOutput('myMap', width = 800, height = 600) 
+                                       google_mapOutput('myMap', width = 500, height = 600) 
                                        
                                    )
                                    
