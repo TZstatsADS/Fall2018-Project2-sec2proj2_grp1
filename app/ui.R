@@ -107,7 +107,7 @@ dashboardPage( skin = 'green', # green lives
                                  tabsetPanel(
                                    tabPanel("The Temperature Changes", plotlyOutput(outputId = 'temp', height = '600px'), 
                                             textOutput("temptext")), 
-                                   tabPanel("The Sea Level Chnanges", plotlyOutput(outputId = 'sealevel', height = '600px'),
+                                   tabPanel("The Sea Level Changes", plotlyOutput(outputId = 'sealevel', height = '600px'),
                                             textOutput('sealeveltext')), 
                                    tabPanel("The Trends in Atomspheric Carbon Dioxide", plotlyOutput(outputId = 'co2level', height = '600px'),
                                             textOutput('co2text'))
