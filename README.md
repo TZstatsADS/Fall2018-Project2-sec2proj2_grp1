@@ -27,6 +27,7 @@ Term: Fall 2018
 + **Project summary**: As we all know, the environment is worsening at a fast pace. It’s high time that we should take actions to promote green lifestyle and that’s why we release our web-based R Shiny tools. We use the R shiny interactive maps to guide people to lead a green life efficiently with Citi bike. The users can explore the nearby bike stations, gardens, recycling bins and libraries on their routes. We can also suggest the optimal route and calculate the calories burned along the way accordingly. Living green is important, and we want to empower you to do your part. Enjoy our tool and learn how to live an environmentally friendly life.  
 
 + **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
++ This is the link to our shiny app:https://xinjin.shinyapps.io/citibikes/
 
 Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is orgarnized as follows.
 
